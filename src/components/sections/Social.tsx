@@ -5,19 +5,19 @@ const socialLinks = [
   {
     name: "GitHub",
     icon: Github,
-    url: "https://github.com",
+    url: "https://github.com/laaaint",
     color: "hover:text-foreground",
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    url: "https://linkedin.com",
+    url: "https://linkedin.com/in/natresmaciel",
     color: "hover:text-primary",
   },
   {
     name: "Twitter",
     icon: Twitter,
-    url: "https://twitter.com",
+    url: "https://twitter.com/_laaaint",
     color: "hover:text-accent-foreground",
   },
   {

@@ -12,8 +12,8 @@ export const About = () => {
           <div className="space-y-6 text-sm md:text-base text-foreground leading-relaxed">
             <p>
               Hi! I'm <strong className="text-primary">Natália Rosa</strong>, a passionate student 
-              in Data Science and Fullstack Development. My tech journey is driven by curiosity 
-              and the constant desire to learn and create innovative solutions.
+              in Systems Analysis and Development student in my 4th semester at UniAmérica Faculdade Descomplica and Data Science, FullStack Development in HashTag Treinamento 'Comunidade Impressionadora' program. My tech journey is driven by curiosity 
+              and the constant desire to learn and create innovative solutions.I’m currently transitioning my career from the logistics field to analysis and development.
             </p>
             
             <p>
