@@ -20,11 +20,13 @@ All colors MUST be HSL.
     --popover: 0 0% 89%;
     --popover-foreground: 0 0% 9%;
 
-    --primary: 243 75% 58%;
-    --primary-foreground: 225 100% 96%;
+    --primary: 0 84% 60%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 0 0% 32%;
+    --secondary: 217 91% 60%;
     --secondary-foreground: 0 0% 98%;
+    
+    --racing-gradient: linear-gradient(135deg, hsl(0 84% 60%), hsl(217 91% 60%));
 
     --muted: 0 0% 63%;
     --muted-foreground: 0 0% 9%;
