@@ -31,9 +31,11 @@ return (
         />
       </div>
 
-      <div className="inline-block px-6 py-3 bg-primary border-4 border-accent mb-4 animate-power-up">
-        <p className="text-xs md:text-sm text-accent">★ Natália Rosa ★</p>
-      </div>
+    <p className="text-5xl md:text-7xl font-arcade text-red-500 text-center mb-8 tracking-wider drop-shadow-[6px_6px_0px_rgba(0,0,0,1)] animate-flicker">
+      ★ Natália Rosa ★
+    </p>
+
+
 
       <p className="text-sm md:text-base lg:text-lg text-muted-foreground mb-10 animate-fade-in leading-relaxed max-w-2xl mx-auto">
         Data Science & Fullstack Development

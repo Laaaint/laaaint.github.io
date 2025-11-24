@@ -117,10 +117,12 @@ export default {
   				'Consolas',
   				'Liberation Mono',
   				'Courier New',
-  				'monospace'
+  				'monospace',
+				'VT323'
   			]
   		}
   	}
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
