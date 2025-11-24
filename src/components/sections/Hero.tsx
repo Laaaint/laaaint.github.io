@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/hero-bg.png";
 import minhaFoto from "@/assets/natalia-rosa.jpg";
 import { Section } from "lucide-react";
 
