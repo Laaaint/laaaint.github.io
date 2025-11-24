@@ -34,21 +34,21 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Processing contact form from:", email);
 
     const emailHtml = `
-      <h2>Nova Mensagem de Contato - Portfolio Natália Rosa</h2>
-      <p><strong>Nome:</strong> ${firstName} ${lastName}</p>
-      <p><strong>E-mail:</strong> ${email}</p>
-      <p><strong>Localização:</strong> ${city}, ${state}</p>
+      <h2>New Contact Message - Natália Rosa Portfolio</h2>
+      <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Location:</strong> ${city}, ${state}</p>
       <hr />
-      <h3>Mensagem:</h3>
+      <h3>Message:</h3>
       <p>${message.replace(/\n/g, '<br>')}</p>
-      ${attachment ? `<p><strong>Anexo:</strong> ${attachment.name} (${attachment.type}, ${Math.round(attachment.size / 1024)}KB)</p>` : ''}
+      ${attachment ? `<p><strong>Attachment:</strong> ${attachment.name} (${attachment.type}, ${Math.round(attachment.size / 1024)}KB)</p>` : ''}
     `;
 
     const emailResponse = await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
       to: ["nataliaresmaciel@outlook.com"],
       replyTo: email,
-      subject: `Contato de ${firstName} ${lastName} - Portfolio`,
+      subject: `Contact from ${firstName} ${lastName} - Portfolio`,
       html: emailHtml,
     });
 

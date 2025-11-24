@@ -85,9 +85,9 @@ export default {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
   		},
-  		fontFamily: {
+		fontFamily: {
   			sans: [
-  				'Lato',
+  				'Press Start 2P',
   				'ui-sans-serif',
   				'system-ui',
   				'-apple-system',
@@ -100,7 +100,7 @@ export default {
   				'sans-serif'
   			],
   			serif: [
-  				'EB Garamond',
+  				'Press Start 2P',
   				'ui-serif',
   				'Georgia',
   				'Cambria',
@@ -109,7 +109,7 @@ export default {
   				'serif'
   			],
   			mono: [
-  				'Fira Code',
+  				'Press Start 2P',
   				'ui-monospace',
   				'SFMono-Regular',
   				'Menlo',
