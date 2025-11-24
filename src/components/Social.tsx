@@ -32,12 +32,12 @@ export const Social = () => {
   return (
     <section id="social" className="py-20 bg-accent">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12">
-          Redes Sociais
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-12 leading-tight">
+          Social Media
         </h2>
         
-        <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Conecte-se comigo nas redes sociais e acompanhe meus projetos e atualizações
+        <p className="text-sm md:text-base text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+          Connect with me on social media and follow my projects and updates
         </p>
         
         <div className="flex justify-center gap-4 flex-wrap">
@@ -49,7 +49,7 @@ export const Social = () => {
                 variant="outline"
                 size="lg"
                 asChild
-                className={`transition-colors ${social.color}`}
+                className={`transition-colors text-xs md:text-sm ${social.color}`}
               >
                 <a 
                   href={social.url} 
@@ -57,7 +57,7 @@ export const Social = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2"
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-4 h-4" />
                   {social.name}
                 </a>
               </Button>

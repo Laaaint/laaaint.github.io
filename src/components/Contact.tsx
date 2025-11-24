@@ -26,7 +26,6 @@ export const Contact = () => {
     setLoading(true);
 
     try {
-      // Prepare the data to send
       const emailData = {
         ...formData,
         attachment: attachment ? {
@@ -36,7 +35,6 @@ export const Contact = () => {
         } : null,
       };
 
-      // Call the edge function
       const { data, error } = await supabase.functions.invoke('send-contact-email', {
         body: emailData,
       });
@@ -44,11 +42,10 @@ export const Contact = () => {
       if (error) throw error;
 
       toast({
-        title: "Mensagem enviada!",
-        description: "Obrigado pelo contato. Responderei em breve!",
+        title: "Message sent!",
+        description: "Thank you for reaching out. I'll get back to you soon!",
       });
 
-      // Reset form
       setFormData({
         firstName: "",
         lastName: "",
@@ -61,8 +58,8 @@ export const Contact = () => {
     } catch (error) {
       console.error('Error sending email:', error);
       toast({
-        title: "Erro ao enviar",
-        description: "Ocorreu um erro ao enviar sua mensagem. Tente novamente.",
+        title: "Error sending",
+        description: "An error occurred while sending your message. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -71,108 +68,115 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contato" className="py-20 bg-background">
+    <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-          Entre em Contato
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 leading-tight">
+          Get In Touch
         </h2>
         
-        <Card className="p-8 max-w-2xl mx-auto">
+        <Card className="p-8 max-w-2xl mx-auto border-2 border-primary/20">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="firstName">Nome *</Label>
+                <Label htmlFor="firstName" className="text-xs md:text-sm">First Name *</Label>
                 <Input
                   id="firstName"
                   required
                   value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  placeholder="Seu nome"
+                  placeholder="Your first name"
+                  className="text-xs md:text-sm"
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="lastName">Sobrenome *</Label>
+                <Label htmlFor="lastName" className="text-xs md:text-sm">Last Name *</Label>
                 <Input
                   id="lastName"
                   required
                   value={formData.lastName}
                   onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  placeholder="Seu sobrenome"
+                  placeholder="Your last name"
+                  className="text-xs md:text-sm"
                 />
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="city">Cidade *</Label>
+                <Label htmlFor="city" className="text-xs md:text-sm">City *</Label>
                 <Input
                   id="city"
                   required
                   value={formData.city}
                   onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                  placeholder="Sua cidade"
+                  placeholder="Your city"
+                  className="text-xs md:text-sm"
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="state">Estado *</Label>
+                <Label htmlFor="state" className="text-xs md:text-sm">State *</Label>
                 <Input
                   id="state"
                   required
                   value={formData.state}
                   onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                  placeholder="Seu estado"
+                  placeholder="Your state"
+                  className="text-xs md:text-sm"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">E-mail *</Label>
+              <Label htmlFor="email" className="text-xs md:text-sm">Email *</Label>
               <Input
                 id="email"
                 type="email"
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="seu.email@exemplo.com"
+                placeholder="your.email@example.com"
+                className="text-xs md:text-sm"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="message">Mensagem *</Label>
+              <Label htmlFor="message" className="text-xs md:text-sm">Message *</Label>
               <Textarea
                 id="message"
                 required
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Escreva sua mensagem aqui..."
+                placeholder="Write your message here..."
                 rows={6}
+                className="text-xs md:text-sm"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="attachment">Anexo (opcional)</Label>
+              <Label htmlFor="attachment" className="text-xs md:text-sm">Attachment (optional)</Label>
               <Input
                 id="attachment"
                 type="file"
                 onChange={(e) => setAttachment(e.target.files?.[0] || null)}
+                className="text-xs md:text-sm"
               />
               {attachment && (
-                <p className="text-sm text-muted-foreground">
-                  Arquivo selecionado: {attachment.name}
+                <p className="text-xs text-muted-foreground">
+                  Selected file: {attachment.name}
                 </p>
               )}
             </div>
 
-            <Button type="submit" className="w-full" size="lg" disabled={loading}>
+            <Button type="submit" className="w-full text-xs md:text-sm" size="lg" disabled={loading}>
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Enviando...
+                  Sending...
                 </>
               ) : (
-                'Enviar Mensagem'
+                'Send Message'
               )}
             </Button>
           </form>
