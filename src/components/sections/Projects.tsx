@@ -1,14 +1,14 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
+import { link } from "fs";
 
 const projects = [
   {
     title: "Sales Data Analysis",
     description: "Interactive dashboard for sales data analysis with Python and real-time visualizations.",
     tags: ["Python", "Pandas", "Plotly", "Streamlit"],
-    github: "#",
-    url:"https://github.com/Laaaint/Sales-Data-Analysis",
+    github: "#https://github.com/Laaaint/Sales-Data-Analysis",
     demo: "#",
   },
   {
