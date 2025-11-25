@@ -8,6 +8,7 @@ const projects = [
     description: "Interactive dashboard for sales data analysis with Python and real-time visualizations.",
     tags: ["Python", "Pandas", "Plotly", "Streamlit"],
     github: "#",
+    url:"https://github.com/Laaaint/Sales-Data-Analysis",
     demo: "#",
   },
   {
