@@ -11,6 +11,7 @@ const projects = [
     github: "#https://github.com/Laaaint/Sales-Data-Analysis",
     demo: "#",
   },
+/*
   {
     title: "Task Management App",
     description: "Fullstack application for task management with authentication and cloud sync.",
@@ -25,6 +26,7 @@ const projects = [
     github: "#",
     demo: "#",
   },
+*/
 ];
 
 export const Projects = () => {
