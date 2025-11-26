@@ -1,183 +1,105 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Loader2 } from "lucide-react";
 
 export const Contact = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-  const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    city: "",
-    state: "",
-    email: "",
-    message: "",
-  });
-  const [attachment, setAttachment] = useState<File | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
+    setIsLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      message: formData.get("message") as string,
+    };
 
     try {
-      const emailData = {
-        ...formData,
-        attachment: attachment ? {
-          name: attachment.name,
-          type: attachment.type,
-          size: attachment.size,
-        } : null,
-      };
-
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: emailData,
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: data,
       });
 
       if (error) throw error;
 
       toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon!",
+        title: "Mensagem enviada!",
+        description: "Obrigado pelo contato. Responderei em breve!",
       });
 
-      setFormData({
-        firstName: "",
-        lastName: "",
-        city: "",
-        state: "",
-        email: "",
-        message: "",
-      });
-      setAttachment(null);
+      (e.target as HTMLFormElement).reset();
     } catch (error) {
-      console.error('Error sending email:', error);
       toast({
-        title: "Error sending",
-        description: "An error occurred while sending your message. Please try again.",
+        title: "Erro ao enviar mensagem",
+        description: "Por favor, tente novamente ou entre em contato por email diretamente.",
         variant: "destructive",
       });
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
   return (
     <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 leading-tight">
-          Get In Touch
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 text-primary leading-tight">
+          Contato
         </h2>
         
-        <Card className="p-8 max-w-2xl mx-auto border-2 border-primary/20">
+        <Card className="p-8 md:p-12 max-w-2xl mx-auto border-4 border-primary/40 hover:border-primary transition-all duration-300 bg-card">
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="firstName" className="text-xs md:text-sm">First Name *</Label>
-                <Input
-                  id="firstName"
-                  required
-                  value={formData.firstName}
-                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  placeholder="Your first name"
-                  className="text-xs md:text-sm"
-                />
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="lastName" className="text-xs md:text-sm">Last Name *</Label>
-                <Input
-                  id="lastName"
-                  required
-                  value={formData.lastName}
-                  onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  placeholder="Your last name"
-                  className="text-xs md:text-sm"
-                />
-              </div>
+            <div>
+              <label htmlFor="name" className="block text-base md:text-lg font-bold mb-2 text-foreground">
+                Nome
+              </label>
+              <Input
+                id="name"
+                name="name"
+                required
+                className="w-full border-2 border-muted text-base md:text-lg py-6"
+                placeholder="Seu nome"
+              />
             </div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="city" className="text-xs md:text-sm">City *</Label>
-                <Input
-                  id="city"
-                  required
-                  value={formData.city}
-                  onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                  placeholder="Your city"
-                  className="text-xs md:text-sm"
-                />
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="state" className="text-xs md:text-sm">State *</Label>
-                <Input
-                  id="state"
-                  required
-                  value={formData.state}
-                  onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                  placeholder="Your state"
-                  className="text-xs md:text-sm"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-xs md:text-sm">Email *</Label>
+            
+            <div>
+              <label htmlFor="email" className="block text-base md:text-lg font-bold mb-2 text-foreground">
+                Email
+              </label>
               <Input
                 id="email"
+                name="email"
                 type="email"
                 required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="your.email@example.com"
-                className="text-xs md:text-sm"
+                className="w-full border-2 border-muted text-base md:text-lg py-6"
+                placeholder="seu@email.com"
               />
             </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="message" className="text-xs md:text-sm">Message *</Label>
+            
+            <div>
+              <label htmlFor="message" className="block text-base md:text-lg font-bold mb-2 text-foreground">
+                Mensagem
+              </label>
               <Textarea
                 id="message"
+                name="message"
                 required
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Write your message here..."
-                rows={6}
-                className="text-xs md:text-sm"
+                className="w-full min-h-[150px] border-2 border-muted text-base md:text-lg"
+                placeholder="Sua mensagem aqui..."
               />
             </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="attachment" className="text-xs md:text-sm">Attachment (optional)</Label>
-              <Input
-                id="attachment"
-                type="file"
-                onChange={(e) => setAttachment(e.target.files?.[0] || null)}
-                className="text-xs md:text-sm"
-              />
-              {attachment && (
-                <p className="text-xs text-muted-foreground">
-                  Selected file: {attachment.name}
-                </p>
-              )}
-            </div>
-
-            <Button type="submit" className="w-full text-xs md:text-sm" size="lg" disabled={loading}>
-              {loading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Sending...
-                </>
-              ) : (
-                'Send Message'
-              )}
+            
+            <Button 
+              type="submit" 
+              disabled={isLoading}
+              className="w-full pixel-button border-4 border-primary bg-primary hover:bg-primary/80 text-base md:text-lg py-6"
+            >
+              {isLoading ? "Enviando..." : "Enviar Mensagem"}
             </Button>
           </form>
         </Card>

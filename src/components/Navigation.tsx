@@ -3,11 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-  { label: "Social", href: "#social" },
+  { label: "Sobre", href: "#about" },
+  { label: "Habilidades", href: "#skills" },
+  { label: "Projetos", href: "#projects" },
+  { label: "Contato", href: "#contact" },
+  { label: "Redes", href: "#social" },
 ];
 
 export const Navigation = () => {
@@ -34,14 +34,14 @@ export const Navigation = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-lg border-b-2 border-primary/20" : "bg-transparent"
+        isScrolled ? "bg-background/95 backdrop-blur-md shadow-lg border-b-4 border-primary/40" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-lg md:text-xl font-bold text-primary hover:opacity-80 transition-opacity"
+            className="text-xl md:text-2xl font-bold text-primary hover:opacity-80 transition-opacity"
           >
             NR
           </button>
@@ -51,7 +51,7 @@ export const Navigation = () => {
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className="text-xs text-foreground hover:text-primary transition-colors"
+                className="text-base md:text-lg font-bold text-foreground hover:text-primary transition-colors px-3 py-2 border-2 border-transparent hover:border-primary rounded"
               >
                 {item.label}
               </button>
@@ -74,7 +74,7 @@ export const Navigation = () => {
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left py-2 text-xs text-foreground hover:text-primary transition-colors"
+                className="block w-full text-left py-2 text-base font-bold text-foreground hover:text-primary transition-colors"
               >
                 {item.label}
               </button>

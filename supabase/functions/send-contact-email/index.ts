@@ -10,17 +10,9 @@ const corsHeaders = {
 };
 
 interface ContactEmailRequest {
-  firstName: string;
-  lastName: string;
-  city: string;
-  state: string;
+  name: string;
   email: string;
   message: string;
-  attachment?: {
-    name: string;
-    type: string;
-    size: number;
-  };
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -29,26 +21,24 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { firstName, lastName, city, state, email, message, attachment }: ContactEmailRequest = await req.json();
+    const { name, email, message }: ContactEmailRequest = await req.json();
 
-    console.log("Processing contact form from:", email);
+    console.log("Processando formulário de contato de:", email);
 
     const emailHtml = `
-      <h2>New Contact Message - Natália Rosa Portfolio</h2>
-      <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+      <h2>Nova Mensagem de Contato - Portfólio Natália Rosa</h2>
+      <p><strong>Nome:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Location:</strong> ${city}, ${state}</p>
       <hr />
-      <h3>Message:</h3>
+      <h3>Mensagem:</h3>
       <p>${message.replace(/\n/g, '<br>')}</p>
-      ${attachment ? `<p><strong>Attachment:</strong> ${attachment.name} (${attachment.type}, ${Math.round(attachment.size / 1024)}KB)</p>` : ''}
     `;
 
     const emailResponse = await resend.emails.send({
-      from: "Portfolio <onboarding@resend.dev>",
+      from: "Portfólio <onboarding@resend.dev>",
       to: ["nataliaresmaciel@outlook.com"],
       replyTo: email,
-      subject: `Contact from ${firstName} ${lastName} - Portfolio`,
+      subject: `Contato de ${name} - Portfólio`,
       html: emailHtml,
     });
 
