@@ -1,78 +1,68 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
-import { link } from "fs";
 
 const projects = [
   {
-    title: "Sales Data Analysis",
-    description: "Interactive dashboard for sales data analysis with Python and real-time visualizations.",
+    title: "Análise de Dados de Vendas",
+    description: "Dashboard interativo para análise de dados de vendas com Python e visualizações em tempo real.",
     tags: ["Python", "Pandas", "Plotly", "Streamlit"],
     github:"https://github.com/Laaaint/Sales-Data-Analysis",
     demo: "#",
   },
-/*
-  {
-    title: "Task Management App",
-    description: "Fullstack application for task management with authentication and cloud sync.",
-    tags: ["React", "TypeScript", "Node.js", "PostgreSQL"],
-    github: "#",
-    demo: "#",
-  },
-  {
-    title: "ML Prediction Model",
-    description: "Predictive model for data classification using machine learning algorithms.",
-    tags: ["Python", "Scikit-learn", "TensorFlow", "Jupyter"],
-    github: "#",
-    demo: "#",
-  },
-*/
 ];
 
 export const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-accent">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-12 leading-tight">
-          Projects
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 text-primary leading-tight">
+          Projetos
         </h2>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {projects.map((project, index) => (
-            <Card key={index} className="hover-scale transition-all duration-300 border-2 border-primary/20">
-              <CardHeader>
-                <CardTitle className="text-sm md:text-base leading-relaxed">{project.title}</CardTitle>
-                <CardDescription className="text-xs md:text-sm leading-relaxed">
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, i) => (
-                    <Badge key={i} variant="secondary" className="text-[10px]">{tag}</Badge>
-                  ))}
-                </div>
-                <div className="flex gap-4">
-                  <a 
-                    href={project.github} 
-                    className="flex items-center gap-2 text-[10px] md:text-xs text-primary hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Github className="w-3 h-3" />
+            <Card key={index} className="p-6 border-4 border-primary/40 hover:border-primary transition-all duration-300 hover:scale-105 bg-card">
+              <h3 className="text-xl md:text-2xl font-bold mb-4 text-secondary leading-tight">
+                {project.title}
+              </h3>
+              <p className="text-sm md:text-base text-muted-foreground mb-6 leading-relaxed">
+                {project.description}
+              </p>
+              
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tags.map((tag, i) => (
+                  <Badge key={i} variant="outline" className="text-xs md:text-sm py-1.5 px-3 border-2">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+              
+              <div className="flex gap-3">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  asChild
+                  className="flex-1 border-2 border-primary hover:bg-primary hover:text-primary-foreground text-sm md:text-base"
+                >
+                  <a href={project.github} target="_blank" rel="noopener noreferrer">
+                    <Github className="w-4 h-4 mr-2" />
                     GitHub
                   </a>
-                  <a 
-                    href={project.demo} 
-                    className="flex items-center gap-2 text-[10px] md:text-xs text-primary hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <ExternalLink className="w-3 h-3" />
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  asChild
+                  className="flex-1 border-2 border-secondary hover:bg-secondary hover:text-secondary-foreground text-sm md:text-base"
+                >
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
                     Demo
                   </a>
-                </div>
-              </CardContent>
+                </Button>
+              </div>
             </Card>
           ))}
         </div>

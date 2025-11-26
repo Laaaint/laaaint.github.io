@@ -23,40 +23,40 @@ return (
     {/* Conteúdo principal */}
     <div className="relative z-10 flex flex-col items-center text-center">
 
-      <div className="flex justify-center mb-6">
+      <div className="flex justify-center mb-8">
         <img
           src={minhaFoto}
           alt="Foto de Natália Rosa"
-          className="w-32 h-32 rounded-full object-cover border-4 border-accent shadow-lg mx-auto"
+          className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-primary shadow-lg mx-auto animate-pulse"
         />
       </div>
 
-    <p className="text-5xl md:text-7xl font-arcade text-red-500 text-center mb-8 tracking-wider drop-shadow-[6px_6px_0px_rgba(0,0,0,1)] animate-flicker">
+    <h1 className="text-4xl md:text-6xl lg:text-7xl font-arcade text-primary text-center mb-8 tracking-wider drop-shadow-[4px_4px_0px_rgba(0,0,0,1)] animate-flicker">
       ★ Natália Rosa ★
-    </p>
+    </h1>
 
 
 
-      <p className="text-sm md:text-base lg:text-lg text-muted-foreground mb-10 animate-fade-in leading-relaxed max-w-2xl mx-auto">
-        Data Science & Fullstack Development
+      <p className="text-xl md:text-2xl lg:text-3xl text-secondary font-bold mb-12 animate-fade-in leading-relaxed max-w-3xl">
+        Data Science & Desenvolvimento FullStack
       </p>
 
-      <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+      <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in">
         <Button 
           size="lg" 
-          className="pixel-button border-4 border-primary hover:bg-primary text-xs md:text-sm gap-2"
+          className="pixel-button border-4 border-primary bg-primary hover:bg-primary/80 text-primary-foreground text-base md:text-lg px-8 py-6"
           onClick={() => scrollToSection('projects')}
         >
-          View Projects
+          Ver Projetos
         </Button>
 
         <Button asChild
           size="lg" 
           variant="outline"
-          className="pixel-button border-4 border-primary hover:bg-primary text-xs md:text-sm gap-2"
+          className="pixel-button border-4 border-secondary bg-secondary/20 hover:bg-secondary hover:text-secondary-foreground text-secondary text-base md:text-lg px-8 py-6"
         >
           <a href="/CV_Natalia_Organizado.pdf" download>
-            Download CV
+            Baixar CV
           </a>
         </Button>
       </div>

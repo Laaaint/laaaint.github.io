@@ -17,8 +17,8 @@ const Index = () => {
       <Contact />
       <Social />
       
-      <footer className="py-8 bg-secondary text-secondary-foreground text-center border-t-2 border-primary/20">
-        <p className="text-xs md:text-sm">&copy; {new Date().getFullYear()} Natália Rosa. All rights reserved.</p>
+      <footer className="py-8 bg-secondary text-secondary-foreground text-center border-t-4 border-primary/40">
+        <p className="text-base md:text-lg">&copy; {new Date().getFullYear()} Natália Rosa. Todos os direitos reservados.</p>
       </footer>
     </div>
   );
