@@ -87,7 +87,7 @@ export default {
   		},
 		fontFamily: {
   			sans: [
-  				'Press Start 2P',
+  				'VT323',
   				'ui-sans-serif',
   				'system-ui',
   				'-apple-system',
@@ -100,7 +100,7 @@ export default {
   				'sans-serif'
   			],
   			serif: [
-  				'Press Start 2P',
+  				'VT323',
   				'ui-serif',
   				'Georgia',
   				'Cambria',
@@ -109,7 +109,7 @@ export default {
   				'serif'
   			],
   			mono: [
-  				'Press Start 2P',
+  				'VT323',
   				'ui-monospace',
   				'SFMono-Regular',
   				'Menlo',
@@ -117,8 +117,7 @@ export default {
   				'Consolas',
   				'Liberation Mono',
   				'Courier New',
-  				'monospace',
-				'VT323'
+  				'monospace'
   			]
   		}
   	}
