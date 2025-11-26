@@ -55,7 +55,7 @@ return (
           variant="outline"
           className="pixel-button border-4 border-primary hover:bg-primary text-xs md:text-sm gap-2"
         >
-          <a href="/CV_Natalia_Organizado.pdf" download>
+          <a href="/CV_Natalia_Rosa.pdf" download>
             Download CV
           </a>
         </Button>
